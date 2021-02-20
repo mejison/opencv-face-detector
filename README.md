@@ -1,2 +1,2 @@
 # OpenCV face detector (JavaScript)
-![](https://i.imgur.com/ImGh15J.gif)
+![Imgur](https://i.imgur.com/m9sjSpV.gif)
