@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>OpenCV.js Face Detection (WebAssembly)</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+
+        .invisible {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        div {
+            margin: 10px;
+        }
+
+        #info {
+            font: 16px 'Lucida Grande', sans-serif;
+        }
+
+        .center-block {
+            display: block;
+            margin: auto;
+        }
+
+        label {
+            padding-right: 10px;
+            width: 25%;
+            vertical-align: top;
+            font: 16px 'Lucida Grande', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="info" class="text-center">
+        OpenCV.js is loading...
+    </div>
+    <div id="container">
+        <canvas class="center-block" id="canvasOutput" width=320 height=240></canvas>
+    </div>
+    <div class="invisible">
+        <video id="video" class="hidden">Your browser does not support the video tag.</video>
+    </div>
+
+    <script>
+        var Module = {
+            wasmBinaryFile: './opencv_js.wasm',
+            preRun: [function () {
+                Module.FS_createPreloadedFile('/', 'haarcascade_frontalface_default.xml', './haarcascade_frontalface_default.xml', true, false);
+            }],
+            _main: function () { opencvIsReady(); }
+        };
+    </script>
+
+    <script async src="./opencv.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
